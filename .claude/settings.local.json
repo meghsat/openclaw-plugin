@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/user/.openclaw -type f -name *.env*)",
+      "Bash(find /c/Users/user/.openclaw -type f ! -path */node_modules/* ! -path */.git/* ! -path */logs/* -name *.md -o -name *.txt -o -name *.config -o -name *.env)"
+    ]
+  }
+}

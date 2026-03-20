@@ -1,0 +1,51 @@
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://127.0.0.1:11434",
+      "api": "ollama",
+      "models": [
+        {
+          "id": "qwen2.5-coder:7b",
+          "name": "qwen2.5-coder:7b",
+          "reasoning": false,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 32768,
+          "maxTokens": 8192
+        }
+      ],
+      "apiKey": "ollama-local"
+    },
+    "lemonade": {
+      "baseUrl": "http://localhost:8000/api/v1",
+      "apiKey": "lemonade",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Qwen3-Coder-30B-A3B-Instruct-GGUF",
+          "name": "Qwen3 Coder 30B (tool-calling)",
+          "reasoning": false,
+          "input": [
+            "text"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 32768,
+          "maxTokens": 4096,
+          "api": "openai-completions"
+        }
+      ]
+    }
+  }
+}

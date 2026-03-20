@@ -1,0 +1,11 @@
+{
+  "name": "lemonade-image-provider",
+  "version": "1.0.0",
+  "description": "Local Lemonade SD image generation provider for OpenClaw",
+  "type": "module",
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "lemonade-image",
+  "name": "Lemonade Image Generation",
+  "description": "Local image generation via Lemonade stable-diffusion.cpp backend",
+  "providers": ["lemonade"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

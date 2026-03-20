@@ -1,0 +1,93 @@
+{
+  // ── LLM Provider: Lemonade local server (AMD Ryzen AI NPU) ───────────────
+  // NOTE: Lemonade's base URL is /api/v1 — NOT /v1 like vLLM or LM Studio
+  models: {
+    providers: {
+      lemonade: {
+        baseUrl: "http://localhost:8000/api/v1",
+        apiKey: "lemonade",         // Placeholder — Lemonade doesn't validate keys
+        api: "openai-completions",  // Standard chat completions format
+        models: [
+          {
+            // Exact model ID from Lemonade's registry (server_models.json)
+            // Checkpoint: amd/Qwen2-7B-onnx-ryzenai-npu, recipe: oga-npu
+            id: "Qwen2-7B-NPU",
+            name: "Qwen2 7B (AMD Ryzen AI NPU)",
+            reasoning: false,
+            input: ["text"],
+            cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
+            contextWindow: 8192,  // Conservative — increase after testing
+            maxTokens: 2048,
+          },
+        ],
+      },
+    },
+  },
+
+  // ── Agent defaults ───────────────────────────────────────────────────────
+  agents: {
+    defaults: {
+      model: {
+        primary: "lemonade/Qwen2-7B-NPU",
+        // Uncomment to add a cloud fallback if Lemonade is offline:
+        // fallbacks: ["anthropic/claude-haiku-4-5-20251001"],
+      },
+    },
+  },
+
+  // ── Discord channel ──────────────────────────────────────────────────────
+  channels: {
+    discord: {
+      token: "${DISCORD_BOT_TOKEN}",  // Loaded from ~/.openclaw/.env
+      groupPolicy: "allowlist",       // Only respond in configured guild/channels
+
+      guilds: {
+        // REPLACE "YOUR_GUILD_ID" with your Discord server ID
+        // How to find it: Discord → Settings → Advanced → Enable Developer Mode
+        //                 then right-click your server → Copy Server ID
+        "1484318936362127435": {
+          slug: "my-server",
+          requireMention: false,  // Bot responds without needing @mention
+
+          channels: {
+            // REPLACE "YOUR_CHANNEL_ID" with your target channel ID
+            // Right-click the channel → Copy Channel ID
+            "1484320997443375176": {
+              allow: true,
+              systemPrompt: "You are LemonBot, a news and market intelligence assistant running on AMD Ryzen AI NPU hardware. When asked for news, fetch and summarize headlines. When asked for stocks/market data, fetch and summarize top movers. Always format as bullet points with sources. Keep responses concise and end with '🤖 AMD Ryzen AI (local)'.",
+            },
+          },
+        },
+      },
+    },
+  },
+
+  // ── Tools ────────────────────────────────────────────────────────────────
+  tools: {
+    web: {
+      fetch: {
+        enabled: true,
+        readability: false,   // Keep raw JSON — we want structured API responses
+        maxCharsCap: 20000,
+      },
+    },
+  },
+
+  // ── Gateway ──────────────────────────────────────────────────────────────
+  gateway: {
+    mode: "local",
+    port: 18789,
+    bind: "loopback",
+    auth: {
+      mode: "token",
+      // CHANGE THIS to a random string for security
+      token: "change-me-to-a-random-secret",
+    },
+  },
+
+  // ── Expose API keys to the agent at runtime ──────────────────────────────
+  env: {
+    NEWS_API_KEY: "${NEWS_API_KEY}",
+    ALPHA_VANTAGE_KEY: "${ALPHA_VANTAGE_KEY}",
+  },
+}
