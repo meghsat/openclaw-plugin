@@ -24,14 +24,16 @@
           {
             "id": "qwen3.5-4b-FLM",
             "name": "Qwen3.5 4B (FLM)",
-            "reasoning": true,
             "input": ["text"],
             "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
             "contextWindow": 16000,
-            "maxTokens": 2048,
+            "maxTokens": 1024,
             "compat": {
               "supportsUsageInStreaming": false,
-              "thinkingFormat": "qwen-chat-template"
+              "supportsStore": false,
+              "supportsStrictMode": false,
+              "supportsTools": false,
+              "maxTokensField": "max_tokens"
             }
           }
         ]
@@ -47,7 +49,7 @@
     "web": {
       "fetch": {
         "enabled": true,
-        "maxCharsCap": 20000,
+        "maxCharsCap": 4000,
         "readability": false
       }
     }
@@ -74,7 +76,7 @@
             },
             "1484367759524626482": {
               "allow": true,
-              "systemPrompt": "You are LemonArt, an image generation bot running on AMD Ryzen AI hardware. Every message you receive is a prompt to generate an image. Always call the image_generate tool with the user's message as the prompt. Do not describe or explain — just generate the image immediately."
+              "directImageGen": true
             }
           }
         }

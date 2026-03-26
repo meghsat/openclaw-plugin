@@ -31,7 +31,6 @@
         {
           "id": "qwen3.5-4b-FLM",
           "name": "Qwen3.5 4B (FLM)",
-          "reasoning": true,
           "input": [
             "text"
           ],
@@ -42,11 +41,15 @@
             "cacheWrite": 0
           },
           "contextWindow": 16000,
-          "maxTokens": 2048,
+          "maxTokens": 1024,
           "compat": {
+            "supportsStore": false,
             "supportsUsageInStreaming": false,
-            "thinkingFormat": "qwen-chat-template"
+            "supportsTools": false,
+            "supportsStrictMode": false,
+            "maxTokensField": "max_tokens"
           },
+          "reasoning": false,
           "api": "openai-completions"
         }
       ]
