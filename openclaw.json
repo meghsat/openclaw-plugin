@@ -1,0 +1,98 @@
+{
+  "env": {
+    "NEWS_API_KEY": "${NEWS_API_KEY}",
+    "ALPHA_VANTAGE_KEY": "${ALPHA_VANTAGE_KEY}",
+    "LEMONADE_API_KEY": "lemonade"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "lemonade/qwen3.5-4b-FLM"
+      },
+      "imageGenerationModel": {
+        "primary": "lemonade/SD-1.5"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "lemonade": {
+        "baseUrl": "http://127.0.0.1:8000/api/v1",
+        "apiKey": "lemonade",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3.5-4b-FLM",
+            "name": "Qwen3.5 4B (FLM)",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 16000,
+            "maxTokens": 2048,
+            "compat": {
+              "supportsUsageInStreaming": false,
+              "thinkingFormat": "qwen-chat-template"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "lemonade": { "enabled": true }
+    }
+  },
+  "tools": {
+    "web": {
+      "fetch": {
+        "enabled": true,
+        "maxCharsCap": 20000,
+        "readability": false
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "token": "${DISCORD_BOT_TOKEN}",
+      "groupPolicy": "allowlist",
+      "guilds": {
+        "1484318936362127435": {
+          "slug": "my-server",
+          "requireMention": false,
+          "channels": {
+            "1484320997443375176": {
+              "allow": true,
+              "systemPrompt": "You are LemonBot, a news and market intelligence assistant running on AMD Ryzen AI hardware.\n\nFor news headlines: call web_fetch with URL https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=${NEWS_API_KEY}\nFor stock market movers: call web_fetch with URL https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${ALPHA_VANTAGE_KEY}\n\nAlways call the tool immediately — do not describe what you are about to do. Summarize results as bullet points with sources. Keep responses concise."
+            },
+            "1484367759524626482": {
+              "allow": true,
+              "systemPrompt": "You are LemonArt, an image generation bot running on AMD Ryzen AI hardware. Every message you receive is a prompt to generate an image. Always call the image_generate tool with the user's message as the prompt. Do not describe or explain — just generate the image immediately."
+            }
+          }
+        }
+      },
+      "streaming": "off"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "${GATEWAY_TOKEN}"
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.3.14",
+    "lastTouchedAt": "2026-03-19T23:01:13.430Z"
+  }
+}

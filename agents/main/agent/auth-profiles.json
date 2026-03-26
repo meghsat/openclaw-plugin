@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "profiles": {
+    "lemonade:default": {
+      "type": "api_key",
+      "provider": "lemonade",
+      "key": "lemonade"
+    }
+  },
+  "lastGood": {
+    "lemonade": "lemonade:default"
+  },
+  "usageStats": {
+    "lemonade:default": {
+      "errorCount": 0,
+      "lastUsed": 1774486836345
+    }
+  }
+}
