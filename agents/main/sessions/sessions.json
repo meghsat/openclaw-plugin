@@ -16,7 +16,7 @@
       "accountId": "default"
     },
     "sessionId": "7a33714b-c0b3-462d-9f1f-8b5cd0160617",
-    "updatedAt": 1774486836964,
+    "updatedAt": 1774487418867,
     "deliveryContext": {
       "channel": "discord",
       "to": "channel:1484367759524626482",
@@ -110,7 +110,7 @@
     "contextTokens": 16000,
     "systemPromptReport": {
       "source": "run",
-      "generatedAt": 1774486815385,
+      "generatedAt": 1774487403447,
       "sessionId": "7a33714b-c0b3-462d-9f1f-8b5cd0160617",
       "sessionKey": "agent:main:discord:channel:1484367759524626482",
       "provider": "lemonade",
@@ -130,9 +130,9 @@
         "sandboxed": false
       },
       "systemPrompt": {
-        "chars": 27791,
+        "chars": 27781,
         "projectContextChars": 13634,
-        "nonProjectContextChars": 14157
+        "nonProjectContextChars": 14147
       },
       "injectedWorkspaceFiles": [
         {
@@ -362,12 +362,12 @@
     },
     "totalTokensFresh": false,
     "status": "failed",
-    "startedAt": 1774486815610,
+    "startedAt": 1774487403678,
     "authProfileOverride": "lemonade:default",
     "authProfileOverrideSource": "auto",
     "authProfileOverrideCompactionCount": 0,
-    "endedAt": 1774486821954,
-    "runtimeMs": 6344
+    "endedAt": 1774487403896,
+    "runtimeMs": 218
   },
   "agent:main:discord:channel:1484320997443375176": {
     "chatType": "channel",
