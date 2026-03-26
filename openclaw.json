@@ -10,7 +10,7 @@
         "primary": "lemonade/qwen3.5-4b-FLM"
       },
       "imageGenerationModel": {
-        "primary": "lemonade/SD-1.5"
+        "primary": "lemonade/SDXL-Turbo"
       }
     }
   },
