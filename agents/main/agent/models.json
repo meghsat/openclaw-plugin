@@ -30,7 +30,8 @@
       "models": [
         {
           "id": "qwen3.5-4b-FLM",
-          "name": "Qwen3.5 4B (FLM)",
+          "name": "qwen3.5-4b-FLM",
+          "reasoning": false,
           "input": [
             "text"
           ],
@@ -40,16 +41,8 @@
             "cacheRead": 0,
             "cacheWrite": 0
           },
-          "contextWindow": 16000,
-          "maxTokens": 1024,
-          "compat": {
-            "supportsStore": false,
-            "supportsUsageInStreaming": false,
-            "supportsTools": false,
-            "supportsStrictMode": false,
-            "maxTokensField": "max_tokens"
-          },
-          "reasoning": false,
+          "contextWindow": 32768,
+          "maxTokens": 4096,
           "api": "openai-completions"
         }
       ]
