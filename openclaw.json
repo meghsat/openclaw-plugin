@@ -10,6 +10,8 @@
       "model": {
         "primary": "lemonade/qwen3.5-4b-FLM"
       },
+      "bootstrapMaxChars": 500,
+      "bootstrapTotalMaxChars": 2000,
       "imageGenerationModel": {
         "primary": "lemonade/Flux-2-Klein-4B"
       }
@@ -35,8 +37,8 @@
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 32768,
-            "maxTokens": 4096
+            "contextWindow": 16384,
+            "maxTokens": 2048
           }
         ]
       }
@@ -74,7 +76,11 @@
           "channels": {
             "1484320997443375176": {
               "allow": true,
-              "systemPrompt": "You are LemonBot, a news and market intelligence assistant running on AMD Ryzen AI hardware.\n\nWhen the user sends 'fetch', 'news', or any similar request for news headlines: run this command using your bash tool:\n  python C:/Users/user/.openclaw/workspace/scripts/news_fetch.py\n\nOnce you have the output, summarize as 5-7 bullet points. Each bullet: **bold headline**, one-sentence summary, source name. Keep total response under 1800 characters. If no articles are found, say so briefly.\n\nWhen asked for stocks or market data, fetch and summarize top movers. Always format as bullet points with sources. Keep responses concise."
+              "preRunScript": "python C:/Users/user/.openclaw/workspace/scripts/news_context.py",
+              "systemPrompt": "You are LemonBot, a news and market intelligence assistant. Current AI news has been automatically fetched and is included above. Summarize as 5-7 bullet points: **bold headline**, one-sentence summary, source name. Keep response under 1800 characters. If no articles available, say so briefly.",
+              "tools": {
+                "deny": ["*"]
+              }
             },
             "1484367759524626482": {
               "allow": true,

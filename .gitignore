@@ -1,3 +1,5 @@
 .env
 .claude/
 update-check.json
+sessions/
+workspace/tmp/

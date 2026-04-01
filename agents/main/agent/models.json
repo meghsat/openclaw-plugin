@@ -41,8 +41,8 @@
             "cacheRead": 0,
             "cacheWrite": 0
           },
-          "contextWindow": 32768,
-          "maxTokens": 4096,
+          "contextWindow": 16384,
+          "maxTokens": 2048,
           "api": "openai-completions"
         }
       ]

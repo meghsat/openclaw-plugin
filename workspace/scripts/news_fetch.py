@@ -269,9 +269,9 @@ def fetch_tavily(api_key: str, max_queries: int = 3, per_query: int = 5) -> list
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch AI news from RSS + Tavily")
-    parser.add_argument("--max-rss",    type=int, default=5,
+    parser.add_argument("--max-rss",    type=int, default=10,
                         help="Max RSS articles (default: 10)")
-    parser.add_argument("--max-tavily", type=int, default=5,
+    parser.add_argument("--max-tavily", type=int, default=10,
                         help="Max Tavily articles (default: 10)")
     parser.add_argument("--hours",      type=int, default=48,
                         help="Recency window in hours (default: 48)")
