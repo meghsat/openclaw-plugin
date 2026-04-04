@@ -29,8 +29,8 @@
       "api": "openai-completions",
       "models": [
         {
-          "id": "qwen3.5-4b-FLM",
-          "name": "qwen3.5-4b-FLM",
+          "id": "Qwen3.5-35B-A3B-GGUF",
+          "name": "Qwen3.5-35B-A3B-GGUF",
           "reasoning": false,
           "input": [
             "text"
@@ -41,7 +41,7 @@
             "cacheRead": 0,
             "cacheWrite": 0
           },
-          "contextWindow": 16384,
+          "contextWindow": 32768,
           "maxTokens": 2048,
           "api": "openai-completions"
         }

@@ -8,7 +8,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "lemonade/qwen3.5-4b-FLM"
+        "primary": "lemonade/Qwen3.5-35B-A3B-GGUF"
       },
       "bootstrapMaxChars": 500,
       "bootstrapTotalMaxChars": 2000,
@@ -25,8 +25,8 @@
         "api": "openai-completions",
         "models": [
           {
-            "id": "qwen3.5-4b-FLM",
-            "name": "qwen3.5-4b-FLM",
+            "id": "Qwen3.5-35B-A3B-GGUF",
+            "name": "Qwen3.5-35B-A3B-GGUF",
             "reasoning": false,
             "input": [
               "text"
@@ -37,7 +37,7 @@
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 16384,
+            "contextWindow": 32768,
             "maxTokens": 2048
           }
         ]
@@ -77,7 +77,7 @@
             "1484320997443375176": {
               "allow": true,
               "preRunScript": "python C:/Users/user/.openclaw/workspace/scripts/news_context.py",
-              "systemPrompt": "You are LemonBot, a news and market intelligence assistant. Current AI news has been automatically fetched and is included above. Summarize as 5-7 bullet points: **bold headline**, one-sentence summary, source name. Keep response under 1800 characters. If no articles available, say so briefly.",
+              "systemPrompt": "You are LemonBot, a news assistant. A formatted AI news feed is injected into your context. When anyone asks for news, output the COMPLETE formatted news feed EXACTLY as provided — every article, every URL, verbatim. Do not summarize, shorten, or rewrite. Never output NO_REPLY.",
               "tools": {
                 "deny": ["*"]
               }
