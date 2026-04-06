@@ -11,10 +11,32 @@
         "primary": "lemonade/qwen3.5-4b-FLM"
       },
       "imageGenerationModel": {
-        "primary": "lemonade/Flux-2-Klein-4B"
+        "primary": "lemonade/Flux-2-Klein-9B-GGUF"
+      }
+    },
+    "list": [
+      {
+        "id": "manga",
+        "model": {
+          "primary": "lemonade/Qwen3.5-35B-A3B-GGUF"
+        }
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "manga",
+      "comment": "Collaborative manga art channel",
+      "match": {
+        "channel": "discord",
+        "peer": {
+          "kind": "channel",
+          "id": "1490123914997666075"
+        }
       }
     }
-  },
+  ],
   "models": {
     "providers": {
       "lemonade": {
@@ -25,6 +47,22 @@
           {
             "id": "qwen3.5-4b-FLM",
             "name": "qwen3.5-4b-FLM",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32768,
+            "maxTokens": 4096
+          },
+          {
+            "id": "Qwen3.5-35B-A3B-GGUF",
+            "name": "Qwen3.5-35B-A3B-GGUF",
             "reasoning": false,
             "input": [
               "text"
@@ -79,6 +117,10 @@
             "1484367759524626482": {
               "allow": true,
               "directImageGen": true
+            },
+            "1490123914997666075": {
+              "allow": true,
+              "systemPrompt": "You are MangaBot, a collaborative manga art director for this channel. Multiple users share this channel and take turns building an ongoing manga story together.\n\nYour job on every message:\n1. Read the user's request carefully and the conversation history to understand the story so far.\n2. Call image_generate with a detailed, coherent prompt that advances the story.\n3. After the image is sent, write a brief 1-2 sentence story caption so other users know what happened.\n\nHOW TO USE THE PREVIOUS IMAGE (critical for continuity):\n- RULE 1: Every image_generate call MUST include \"prompt\". No exceptions. Never call image_generate without prompt.\n- RULE 2: Only pass these parameters: prompt, image (optional). Never pass model, resolution, count, or aspectRatio.\n- RULE 3: For the very first image in a session, call image_generate with only prompt (no image).\n- RULE 4: For every follow-up request, you MUST pass the image path from the CURRENT conversation. Before calling image_generate, scroll back through this conversation and find the most recent image_generate tool result. Copy the value inside its \"paths\" array EXACTLY — the full path string, character for character, with no modifications. Never use a path from memory.\n- Example first call: image_generate({ prompt: \"manga panel, black and white ink...\" })\n- Example follow-up call: image_generate({ prompt: \"manga panel, black and white ink...\", image: \"<exact path from paths array of last tool result>\" })\n\nPrompt crafting rules:\n- Open every prompt with the art style: \"manga panel, black and white ink, screentone shading, bold outlines\".\n- In img2img mode, write the prompt as a full description of the desired output (not as instructions like 'change X'). FLUX interprets the whole prompt as the target image.\n- Include any named characters established earlier in the session (e.g. \"Naruto in orange jumpsuit, spiky blond hair\", \"Sasuke in dark blue outfit, dark hair\") so character appearance stays consistent.\n- Describe the scene, action, emotion, and framing (e.g. \"close-up portrait\", \"wide action shot\", \"dramatic low-angle\").\n- Keep prompts under 200 words.\n\nRules for the channel:\n- Every user message must result in exactly one image_generate call — no exceptions.\n- Do NOT refuse creative manga requests unless they involve real-world harm.\n- If a request is too vague, make a reasonable creative choice and note it in your caption.\n- Keep story captions short — this is a visual-first channel."
             }
           }
         }

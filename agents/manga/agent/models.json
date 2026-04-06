@@ -1,31 +1,8 @@
 {
   "providers": {
-    "ollama": {
-      "baseUrl": "http://127.0.0.1:11434",
-      "api": "ollama",
-      "models": [
-        {
-          "id": "qwen2.5-coder:7b",
-          "name": "qwen2.5-coder:7b",
-          "reasoning": false,
-          "input": [
-            "text"
-          ],
-          "cost": {
-            "input": 0,
-            "output": 0,
-            "cacheRead": 0,
-            "cacheWrite": 0
-          },
-          "contextWindow": 32768,
-          "maxTokens": 8192
-        }
-      ],
-      "apiKey": "ollama-local"
-    },
     "lemonade": {
       "baseUrl": "http://127.0.0.1:8000/api/v1",
-      "apiKey": "LEMONADE_API_KEY",
+      "apiKey": "lemonade",
       "api": "openai-completions",
       "models": [
         {
