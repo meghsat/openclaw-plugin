@@ -2,13 +2,13 @@
   "entries": {
     "C:\\Users\\user\\.openclaw\\openclaw.json": {
       "lastKnownGood": {
-        "hash": "b6310a35c32e052e405e6ee27b0c6bc4ce5c68e9176cce5fcde7801963a98af8",
-        "bytes": 6458,
-        "mtimeMs": 1775433775206.401,
-        "ctimeMs": 1775433775217.8955,
+        "hash": "70013ff1634776f15d238e2e283aa9c72667cd4da27102503a38eb2dc7ef96d2",
+        "bytes": 6537,
+        "mtimeMs": 1775437836186.1804,
+        "ctimeMs": 1775437836186.1804,
         "hasMeta": true,
         "gatewayMode": "local",
-        "observedAt": "2026-04-06T00:02:55.964Z"
+        "observedAt": "2026-04-06T01:10:36.881Z"
       },
       "lastObservedSuspiciousSignature": null
     }
