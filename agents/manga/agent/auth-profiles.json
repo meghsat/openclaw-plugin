@@ -13,7 +13,8 @@
   "usageStats": {
     "lemonade:default": {
       "errorCount": 0,
-      "lastUsed": 1775439908541
+      "lastUsed": 1777069268466,
+      "lastFailureAt": 1776284883605
     }
   }
 }

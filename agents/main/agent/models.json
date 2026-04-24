@@ -24,7 +24,7 @@
       "apiKey": "ollama-local"
     },
     "lemonade": {
-      "baseUrl": "http://127.0.0.1:8000/api/v1",
+      "baseUrl": "http://127.0.0.1:13305/api/v1",
       "apiKey": "LEMONADE_API_KEY",
       "api": "openai-completions",
       "models": [
@@ -46,11 +46,12 @@
           "api": "openai-completions"
         },
         {
-          "id": "Qwen3.5-35B-A3B-GGUF",
-          "name": "Qwen3.5-35B-A3B-GGUF",
+          "id": "Qwen3.5-9B-GGUF",
+          "name": "Qwen3.5-9B-GGUF",
           "reasoning": false,
           "input": [
-            "text"
+            "text",
+            "image"
           ],
           "cost": {
             "input": 0,
@@ -59,6 +60,24 @@
             "cacheWrite": 0
           },
           "contextWindow": 32768,
+          "maxTokens": 4096,
+          "api": "openai-completions"
+        },
+        {
+          "id": "user.Qwen3.6-27B-GGUF",
+          "name": "user.Qwen3.6-27B-GGUF",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0
+          },
+          "contextWindow": 190000,
           "maxTokens": 4096,
           "api": "openai-completions"
         }

@@ -18,7 +18,7 @@
       {
         "id": "manga",
         "model": {
-          "primary": "lemonade/Qwen3.5-35B-A3B-GGUF"
+          "primary": "lemonade/user.Qwen3.6-27B-GGUF"
         }
       }
     ]
@@ -40,7 +40,7 @@
   "models": {
     "providers": {
       "lemonade": {
-        "baseUrl": "http://127.0.0.1:8000/api/v1",
+        "baseUrl": "http://127.0.0.1:13305/api/v1",
         "apiKey": "lemonade",
         "api": "openai-completions",
         "models": [
@@ -61,11 +61,12 @@
             "maxTokens": 4096
           },
           {
-            "id": "Qwen3.5-35B-A3B-GGUF",
-            "name": "Qwen3.5-35B-A3B-GGUF",
+            "id": "Qwen3.5-9B-GGUF",
+            "name": "Qwen3.5-9B-GGUF",
             "reasoning": false,
             "input": [
-              "text"
+              "text",
+              "image"
             ],
             "cost": {
               "input": 0,
@@ -74,6 +75,23 @@
               "cacheWrite": 0
             },
             "contextWindow": 32768,
+            "maxTokens": 4096
+          },
+          {
+            "id": "user.Qwen3.6-27B-GGUF",
+            "name": "user.Qwen3.6-27B-GGUF",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 190000,
             "maxTokens": 4096
           }
         ]
@@ -121,7 +139,7 @@
             "1490123914997666075": {
               "allow": true,
               "preRunScript": "python C:/Users/user/.openclaw/workspace/scripts/manga_context.py",
-              "systemPrompt": "You are MangaBot, a collaborative manga art director for this channel. Multiple users share this channel and take turns building an ongoing manga story together.\n\nYour job on every message:\n1. Read the user's request carefully and the conversation history to understand the story so far.\n2. Call image_generate with a detailed, coherent prompt that advances the story.\n3. After the image is sent, write a brief 1-2 sentence story caption so other users know what happened.\n\nHOW TO CALL image_generate:\n- Only ever pass two parameters: \"prompt\" (always required) and \"image\" (optional, for edits).\n- Never pass model, resolution, count, aspectRatio, or any other parameter.\n\nWHEN TO USE EDIT MODE (pass image):\n- Before every message, a script injects a line like: MANGA_LATEST_IMAGE: C:\\Users\\user\\.openclaw\\media\\tool-image-generation\\image-1---abc.png\n- If that line is present in your context AND the user is continuing, editing, or building on the current scene, pass that exact path as the \"image\" parameter.\n- Copy the path verbatim from the MANGA_LATEST_IMAGE line — do not modify it.\n- Example: image_generate({ prompt: \"manga panel...\", image: \"C:\\Users\\user\\.openclaw\\media\\tool-image-generation\\image-1---abc.png\" })\n\nWHEN TO GENERATE FROM SCRATCH (no image):\n- If no MANGA_LATEST_IMAGE line is in your context (very first generation ever), omit image.\n- If the user explicitly requests a completely new scene, new story, or new characters, omit image.\n- Example: image_generate({ prompt: \"manga panel...\" })\n\nPrompt crafting rules:\n- Open every prompt with: \"manga panel, black and white ink, screentone shading, bold outlines\".\n- Write the prompt as a full description of the desired output image. Never write instructions like 'add X' or 'change Y' — describe the complete scene as it should look.\n- Include named characters with their appearance (e.g. \"Naruto in orange jumpsuit, spiky blond hair\") so FLUX keeps them consistent.\n- Describe scene, action, emotion, and framing (e.g. \"close-up portrait\", \"wide action shot\", \"dramatic low-angle\").\n- Keep prompts under 200 words.\n\nRules for the channel:\n- Every user message must result in exactly one image_generate call — no exceptions.\n- Do NOT refuse creative manga requests unless they involve real-world harm.\n- If a request is too vague, make a reasonable creative choice and note it in your caption.\n- Keep story captions short — this is a visual-first channel."
+              "systemPrompt": "You are MangaBot. The image has already been generated and posted to the channel. Your only job is to write exactly one short, dramatic sentence as the story caption. No tool calls. No explanations. Just the caption."
             }
           }
         }
